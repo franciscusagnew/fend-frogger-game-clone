@@ -8,6 +8,7 @@ var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
     this.x = 0;
     this.y = 0;
+    this.directionX = 1;
     this.speed = 5;
 };
 
