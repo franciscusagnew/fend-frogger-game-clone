@@ -26,12 +26,6 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Draw the player on the screen, required method for game
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -47,6 +41,33 @@ var Player = function() {
 // Update the player's position
 Player.prototype.update = function(dt) {
     // tbd
+};
+
+// Draw the player on the screen, required method for game
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Moves the player according to the user's input, required method for game
+Player.prototype.handleInput = function(string) {
+    let result = string;
+    console.log(result);
+
+    if (result === 'left') {
+        console.log('The left key was pressed!');
+        this.x = this.x - 100;
+    } else if (result === 'up') {
+        console.log('The up key was pressed!');
+        this.y = this.y - 81;
+    } else if (result === 'right') {
+        console.log('The right was pressed!');
+        this.x = this.x + 100;
+    } else if (result === 'down') {
+        console.log('The down key was pressed!');
+        this.y = this.y + 81;
+    } else {
+        console.log('Some other key was pressed!');
+    }
 };
 
 // Now instantiate your objects.
