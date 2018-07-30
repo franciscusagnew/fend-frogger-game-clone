@@ -61,24 +61,19 @@ Player.prototype.render = function() {
 };
 
 // Moves the player according to the user's input, required method for game
-Player.prototype.handleInput = function(string) {
-    let result = string;
-    console.log(result);
-
-    if (result === 'left') {
+Player.prototype.handleInput = function(input) {
+    if (input === 'left') {
         console.log('The left key was pressed!');
-        this.x = this.x - 100;
-    } else if (result === 'up') {
+        this.x -= 100;
+    } else if (input === 'up') {
         console.log('The up key was pressed!');
-        this.y = this.y - 81;
-    } else if (result === 'right') {
+        this.y -= 81;
+    } else if (input === 'right') {
         console.log('The right was pressed!');
-        this.x = this.x + 100;
-    } else if (result === 'down') {
+        this.x += 100;
+    } else if (input === 'down') {
         console.log('The down key was pressed!');
-        this.y = this.y + 81;
-    } else {
-        console.log('Some other key was pressed!');
+        this.y += 81;
     }
 };
 
