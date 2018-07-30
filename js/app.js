@@ -1,3 +1,10 @@
+const positions = [60, 145, 230];
+
+// Randomize enemy positions
+function randomIndex(position) {
+    return position[Math.floor((Math.random() * position.length))];  
+}
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -7,18 +14,9 @@ var Enemy = function() {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = 0;
-    this.y = 60;
+    this.y = randomIndex(positions);
     this.speed = 5;
 };
-
-const positions = [60, 145, 230];
-// Randomize enemy positions
-function randomIndex(position) {
-    return position[Math.floor((Math.random() * position.length))];  
-}
-
-let number = randomIndex(positions);
-console.log(number);
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
