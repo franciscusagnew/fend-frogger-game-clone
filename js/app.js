@@ -15,7 +15,7 @@ var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
     this.x = 0;
     this.y = randomIndex(positions);
-    this.speed = Math.floor((Math.random() * 250) + 100);
+    this.speed = Math.floor((Math.random() * 250) + 150);
 };
 
 // Update the enemy's position, required method for game
@@ -30,6 +30,7 @@ Enemy.prototype.update = function(dt) {
     if(this.x > 505) {
         this.x = 0;
         this.y = randomIndex(positions);
+        this.speed = Math.floor((Math.random() * 250) + 150);
     }
 };
 
@@ -52,7 +53,7 @@ var Player = function() {
 
 // Update the player's position
 Player.prototype.update = function(dt) {
-    // tbd
+    checkCollisions();
 };
 
 // Draw the player on the screen, required method for game
@@ -86,6 +87,16 @@ for (let i = 0; i < 3; i++) {
 
 // Place the player object in a variable called player
 let player = new Player();
+
+let checkCollisions = function() {
+    for (var i = 0; i < allEnemies.length; i++) {
+        if (Math.abs(player.x - allEnemies[i].x) < 40 && 
+            Math.abs(player.y - allEnemies[i].y) < 40) {
+            player.x = 201;
+            player.y = 400;
+        }
+    }
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
