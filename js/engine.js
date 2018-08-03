@@ -22,6 +22,7 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
+        playerSelect = doc.querySelector('#playerSelect'),
         lastTime;
 
     canvas.width = 505;
@@ -66,6 +67,7 @@ var Engine = (function(global) {
         reset();
         lastTime = Date.now();
         main();
+        document.querySelector('.boy').focus();
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -173,7 +175,10 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 
