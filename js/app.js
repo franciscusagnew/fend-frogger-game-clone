@@ -66,14 +66,29 @@ Player.prototype.update = function(dt) {
         this.y = y * dt;
     };
     // Check for collisions
-    checkCollisions();
-    console.log(this.y);
+    this.checkCollisions();
 };
 
 // Draw the player on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+// Check to see if enemy collides with player
+Player.prototype.checkCollisions = function() {
+    for (var i = 0; i < allEnemies.length; i++) {
+        if (Math.abs(this.x - allEnemies[i].x) < 50 && 
+            Math.abs(this.y - allEnemies[i].y) < 40) {
+            this.x = 201;
+            this.y = 400;
+            lives -= 1;
+            document.querySelector('.lives').innerHTML = lives;
+            if (lives === 0) {
+                gameOverModal.style.display = "block";
+            }
+        }
+    }
+}
 
 // Moves the player according to the user's input, required method for game
 Player.prototype.handleInput = function(input) {
@@ -107,22 +122,6 @@ for (let i = 0; i < 4; i++) {
 
 // Place the player object in a variable called player
 let player = new Player(201, 400);
-
-// Check to see if enemy collides with player
-let checkCollisions = function() {
-    for (var i = 0; i < allEnemies.length; i++) {
-        if (Math.abs(player.x - allEnemies[i].x) < 50 && 
-            Math.abs(player.y - allEnemies[i].y) < 40) {
-            player.x = 201;
-            player.y = 400;
-            lives -= 1;
-            document.querySelector('.lives').innerHTML = lives;
-            if (lives === 0) {
-                gameOverModal.style.display = "block";
-            }
-        }
-    }
-}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
