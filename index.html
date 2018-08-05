@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Frogger Game Clone</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-	<h1 class="game-header">FEND GAME</h1>
-	<hr>
-	<div class="scoreboard">
-		<h2>Score: <span class="score">0</span> | Lives: <span class="lives">0</span></h2>
-	</div>
-	<hr>
-	<div class="start modal">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>FEND GAME</h2>
-			</div>
-			<div class="intro">
-				<p class="title">CHARACTER SELECTION:</p>
-				<p>Please select your character</p>
-			</div>
-	
-			<img src="images/char-boy.png" class="boy" tabindex="0">
-            <img src="images/char-cat-girl.png" class="cat-girl" tabindex="0">
-            <img src="images/char-horn-girl.png" class="horn-girl" tabindex="0">
-            <img src="images/char-princess-girl.png" class="princess-girl" tabindex="0">
-			<button class="playBtn">PLAY</button>
-		</div>
-	</div>
 
-	<div class="gameOver modal">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>FEND GAME</h2>
-			</div>
-			<div class="results">
-				<p class="ending">GAME OVER!</p>
-				<p>You scored <span class="finalScore">0</span> points.</p>
-			</div>
-			
-			<button class="restartBtn">PLAY AGAIN</button>
-		</div>
-	</div>
+<body>
+    <h1 class="game-header">FEND GAME</h1>
+    <hr>
+    <div class="scoreboard">
+        <h2>Score: <span class="score">0</span> | Lives: <span class="lives">0</span></h2>
+    </div>
+    <hr>
+    <div class="start modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>FEND GAME</h2>
+            </div>
+            <div class="intro">
+                <p class="title">CHARACTER SELECTION:</p>
+                <p>Please select your character</p>
+            </div>
+            <img src="images/char-boy.png" class="boy" tabindex="0" alt="Boy image">
+            <img src="images/char-cat-girl.png" class="cat-girl" tabindex="0" alt="Cat Girl image">
+            <img src="images/char-horn-girl.png" class="horn-girl" tabindex="0" alt="Horn Girl image">
+            <img src="images/char-princess-girl.png" class="princess-girl" tabindex="0" alt="Princess Girl image">
+            <button class="playBtn">PLAY</button>
+        </div>
+    </div>
+    <div class="gameOver modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>FEND GAME</h2>
+            </div>
+            <div class="results">
+                <p class="ending">GAME OVER!</p>
+                <p>You scored <span class="finalScore">0</span> points.</p>
+            </div>
+            <button class="restartBtn">PLAY AGAIN</button>
+        </div>
+    </div>
+    
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>

@@ -1,4 +1,6 @@
-// PNumber of player lives
+'use strict'
+
+// Number of player lives
 let lives = 3;
 document.querySelector('.lives').innerHTML = lives;
 // Player's current score
@@ -10,11 +12,11 @@ const enemyPos = [60, 145, 230];
 
 // Randomize enemy positions
 function randomIndex(position) {
-    return position[Math.floor((Math.random() * position.length))];  
+    return position[Math.floor((Math.random() * position.length))];
 }
 
 // Enemies our player must avoid
-var Enemy = function() {
+const Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -35,7 +37,7 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
     // Check enemy's screen position 
-    if(this.x > 505) {
+    if (this.x > 505) {
         this.x = 0;
         this.y = randomIndex(enemyPos);
         this.speed = Math.floor((Math.random() * 200) + 100);
@@ -61,12 +63,9 @@ var Player = function(x, y) {
 
 // Update the player's position
 Player.prototype.update = function(dt) {
-    if (dt > 0) {
-        this.x = x * dt;
-        this.y = y * dt;
-    };
     // Check for collisions
     this.checkCollisions();
+    console.log(this.y);
 };
 
 // Draw the player on the screen, required method for game
@@ -77,7 +76,7 @@ Player.prototype.render = function() {
 // Check to see if enemy collides with player
 Player.prototype.checkCollisions = function() {
     for (var i = 0; i < allEnemies.length; i++) {
-        if (Math.abs(this.x - allEnemies[i].x) < 50 && 
+        if (Math.abs(this.x - allEnemies[i].x) < 50 &&
             Math.abs(this.y - allEnemies[i].y) < 40) {
             this.x = 201;
             this.y = 400;
@@ -88,7 +87,7 @@ Player.prototype.checkCollisions = function() {
             }
         }
     }
-}
+};
 
 // Moves the player according to the user's input, required method for game
 Player.prototype.handleInput = function(input) {
@@ -100,15 +99,14 @@ Player.prototype.handleInput = function(input) {
         this.y += 81;
     } else if (input == 'up' && this.y > 0) {
         this.y -= 81;
-        if (this.y == -5) {
+        if (this.y === -5) {
             score += 5;
             document.querySelector('.score').innerHTML = score;
             document.querySelector('.finalScore').innerHTML = score;
             setTimeout(function() {
-                // Reset player's start position
-                player.x = 201;
-                player.y = 400;
-            }, 1000);
+                this.x = 201;
+                this.y = 400;
+            }.bind(this), 1000);    
         }
     }
 };
@@ -149,7 +147,7 @@ function playerSelect(e) {
     } else if (e.target && e.target.matches('img.princess-girl')) {
         player.sprite = 'images/char-princess-girl.png';
     }
-}
+};
 
 // Pick character that the user selected
 document.querySelector('.start').addEventListener('keyup', select);
@@ -173,7 +171,7 @@ var restartBtn = document.querySelector(".restartBtn");
 // When the user clicks on the playBtn, close the modal 
 playBtn.onclick = function() {
     startModal.style.display = "none";
-}
+};
 
 // When the user clicks on the restartBtn, restart game
 restartBtn.onclick = function() {
@@ -183,11 +181,11 @@ restartBtn.onclick = function() {
     lives = 3;
     document.querySelector('.lives').innerHTML = lives;
     startModal.style.display = "block";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == startModal || event.target == gameOverModal) {
         startModal.style.display = "none";
     }
-}
+};
