@@ -65,7 +65,6 @@ var Player = function(x, y) {
 Player.prototype.update = function(dt) {
     // Check for collisions
     this.checkCollisions();
-    console.log(this.y);
 };
 
 // Draw the player on the screen, required method for game
